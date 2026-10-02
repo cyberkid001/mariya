@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>For Mariya 💗</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-1: #ffeaf1;
+    --bg-2: #ffc4d8;
+    --ink: #4b1030;
+    --ink-soft: #7d3559;
+    --candy: #d81e5b;
+    --glow: rgba(255, 92, 138, 0.38);
+    --halo: rgba(255, 255, 255, 0.7);
+
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *, *::before, *::after { box-sizing: inherit; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg-1: #3a0d33;
+      --bg-2: #1c0518;
+      --ink: #ffe9f1;
+      --ink-soft: #f6b9d0;
+      --candy: #d81e5b;
+      --glow: rgba(255, 78, 130, 0.35);
+      --halo: rgba(255, 140, 180, 0.12);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg-1: #3a0d33;
+    --bg-2: #1c0518;
+    --ink: #ffe9f1;
+    --ink-soft: #f6b9d0;
+    --candy: #d81e5b;
+    --glow: rgba(255, 78, 130, 0.35);
+    --halo: rgba(255, 140, 180, 0.12);
+  }
+
+  html { height: 100%; overflow-x: clip; scroll-padding-top: env(safe-area-inset-top, 0px); background: var(--bg-2); }
+  body {
+    margin: 0;
+    min-height: 100%;
+    font-family: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(60% 40% at 50% 8%, var(--halo), transparent 70%),
+      linear-gradient(180deg, var(--bg-1), var(--bg-2));
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  #fx {
+    position: fixed; inset: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* ---------- gate ---------- */
+  .gate {
+    position: fixed; inset: 0;
+    z-index: 5;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 1.6rem;
+    padding: calc(2rem + env(safe-area-inset-top, 0px)) 1.5rem calc(2rem + env(safe-area-inset-bottom, 0px));
+    border: 0;
+    width: 100%;
+    font: inherit;
+    color: var(--ink);
+    background: transparent;
+    cursor: pointer;
+    transition: opacity .9s ease, transform .9s ease, visibility 0s linear .9s;
+  }
+  .gate:focus-visible { outline: 3px solid var(--candy); outline-offset: -10px; border-radius: 28px; }
+  .gate .heart-big {
+    width: min(46vw, 210px);
+    filter: drop-shadow(0 14px 30px var(--glow));
+    animation: beat 1.6s ease-in-out infinite;
+  }
+  .gate .for {
+    font-family: "Fraunces", Georgia, serif;
+    font-style: italic;
+    font-weight: 600;
+    font-variation-settings: "SOFT" 100;
+    font-size: clamp(1.7rem, 7vw, 2.4rem);
+    margin: 0;
+    text-align: center;
+  }
+  .gate .hint {
+    font-weight: 700;
+    color: var(--ink-soft);
+    font-size: 1rem;
+    animation: nudge 2.4s ease-in-out infinite;
+  }
+  body.open .gate {
+    opacity: 0; transform: scale(1.35); visibility: hidden; pointer-events: none;
+  }
+
+  @keyframes beat {
+    0%, 100% { transform: scale(1); }
+    14% { transform: scale(1.13); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.08); }
+    70% { transform: scale(1); }
+  }
+  @keyframes nudge {
+    0%, 100% { opacity: .55; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(-3px); }
+  }
+
+  /* ---------- main stage ---------- */
+  main {
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 2.5rem 1.4rem 3rem;
+    gap: 1.5rem;
+  }
+
+  .name {
+    position: relative;
+    margin: 0;
+    font-family: "Fraunces", Georgia, serif;
+    font-style: italic;
+    font-weight: 700;
+    font-variation-settings: "SOFT" 100, "opsz" 144;
+    font-size: clamp(4rem, 21vw, 9.5rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    display: flex; justify-content: center;
+    filter: drop-shadow(0 10px 18px rgba(216, 30, 91, 0.12));
+  }
+  .name::before {
+    content: "";
+    position: absolute; z-index: -1;
+    inset: -35% -25%;
+    background: radial-gradient(closest-side, var(--glow), transparent 72%);
+    opacity: 0;
+  }
+  .name::after {
+    content: "";
+    position: absolute;
+    inset: 15% -10% 18%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.52), transparent);
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  body.open .name::before { animation: glowIn 1.2s ease .3s forwards, beat 1.6s ease-in-out 1.5s infinite; }
+  body.open .name::after { animation: shimmer 1.2s ease .85s forwards; }
+  @keyframes glowIn { to { opacity: 1; } }
+  @keyframes shimmer {
+    0% { opacity: 0; transform: translateX(-120%); }
+    18% { opacity: 1; }
+    100% { opacity: 0; transform: translateX(120%); }
+  }
+  @keyframes nameFloat {
+    0% { transform: translateY(0) rotate(-1deg); }
+    50% { transform: translateY(-8px) rotate(1deg); }
+    100% { transform: translateY(0) rotate(-1deg); }
+  }
+
+  .letter { display: inline-block; opacity: 0; transform-origin: center bottom; }
+  body.open .letter {
+    animation: letterIn .9s cubic-bezier(.2, .9, .3, 1.2) both;
+    animation-delay: calc(.35s + var(--i) * .12s);
+  }
+  @keyframes letterIn {
+    0% { opacity: 0; transform: translateY(.55em) scale(.7) rotate(-12deg); filter: blur(10px); }
+    55% { opacity: 1; }
+    72% { transform: translateY(-4px) scale(1.08) rotate(2deg); }
+    100% { opacity: 1; transform: none; filter: blur(0); }
+  }
+  body.open .name { animation: nameFloat 4.5s ease-in-out 1.5s infinite alternate; }
+
+  .sticker {
+    display: inline-block;
+    margin: 0;
+    padding: .55rem 1.35rem .6rem;
+    border-radius: 999px;
+    background: var(--candy);
+    color: #fff;
+    font-weight: 800;
+    font-size: clamp(1.15rem, 4.6vw, 1.5rem);
+    letter-spacing: .01em;
+    box-shadow: 0 8px 22px -6px var(--glow), inset 0 -3px 0 rgba(0, 0, 0, .12);
+    transform: rotate(-3deg);
+    opacity: 0;
+  }
+  body.open .sticker { animation: pop .8s cubic-bezier(.3, 1.6, .5, 1) 1.25s both; }
+  @keyframes pop {
+    from { opacity: 0; transform: scale(.4) rotate(-14deg); }
+    to   { opacity: 1; transform: scale(1) rotate(-3deg); }
+  }
+
+  .lead {
+    margin: .4rem 0 0;
+    max-width: 30ch;
+    font-size: clamp(1.05rem, 4.2vw, 1.25rem);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    font-weight: 700;
+  }
+
+  .rise { opacity: 0; }
+  body.open .rise { animation: rise .9s ease both; animation-delay: var(--d, 0s); }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .note-wrap { display: flex; flex-direction: column; align-items: center; gap: 1.1rem; }
+  .note {
+    margin: 0;
+    min-height: 4.6em;
+    max-width: 28ch;
+    display: flex; align-items: center; justify-content: center;
+    font-family: "Fraunces", Georgia, serif;
+    font-style: italic;
+    font-variation-settings: "SOFT" 100;
+    font-weight: 500;
+    font-size: clamp(1.25rem, 5.4vw, 1.7rem);
+    line-height: 1.35;
+    color: var(--ink);
+  }
+  .note.show { animation: noteIn .6s ease both; }
+  @keyframes noteIn {
+    from { opacity: 0; transform: translateY(8px) scale(.98); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .gallery {
+    width: min(100%, 46rem);
+    padding: 1.1rem 0 0;
+  }
+  .gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.9rem;
+  }
+  .gallery-title {
+    margin: 0;
+    font-family: "Fraunces", Georgia, serif;
+    font-style: italic;
+    font-size: clamp(1.7rem, 5vw, 2.3rem);
+    color: var(--ink);
+  }
+  .gallery-tag {
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.32);
+    color: var(--ink-soft);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .photo-card {
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    border-radius: 1.3rem;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(122, 26, 67, 0.12);
+    box-shadow: 0 18px 32px -24px var(--glow);
+    min-height: 14rem;
+  }
+  .photo-card--wide {
+    grid-column: span 2;
+    min-height: 18rem;
+  }
+  .photo-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.4s ease, filter 0.4s ease;
+  }
+  .photo-card:hover img {
+    transform: scale(1.04);
+    filter: saturate(1.08);
+  }
+  .photo-card::after {
+    content: attr(data-label);
+    position: absolute;
+    left: 0.8rem;
+    bottom: 0.8rem;
+    padding: 0.4rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(75, 16, 48, 0.52);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .btn {
+    appearance: none;
+    border: 0;
+    cursor: pointer;
+    min-height: 52px;
+    padding: .85rem 1.9rem;
+    border-radius: 999px;
+    background: var(--candy);
+    color: #fff;
+    font: 800 1.05rem/1 "Nunito", system-ui, sans-serif;
+    box-shadow: 0 12px 26px -8px var(--glow), inset 0 -3px 0 rgba(0, 0, 0, .14);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn:active { transform: scale(.95); }
+  .btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; }
+
+  .truth-card {
+    width: min(100%, 36rem);
+    padding: 1.4rem 1.1rem 1.2rem;
+    border-radius: 1.5rem;
+    background: rgba(255,255,255,0.28);
+    border: 1px solid rgba(122, 26, 67, 0.12);
+    box-shadow: 0 16px 35px -22px var(--glow);
+    backdrop-filter: blur(8px);
+  }
+  .truth-title {
+    margin: 0 0 .5rem;
+    font-family: "Fraunces", Georgia, serif;
+    font-style: italic;
+    font-size: clamp(1.4rem, 5vw, 2rem);
+    color: var(--ink);
+  }
+  .truth-copy {
+    margin: 0 0 1rem;
+    color: var(--ink-soft);
+    font-size: 1rem;
+    line-height: 1.6;
+    font-weight: 700;
+  }
+  .truth-field {
+    display: block;
+    text-align: left;
+  }
+  .truth-label {
+    display: block;
+    margin-bottom: .5rem;
+    color: var(--ink);
+    font-weight: 800;
+    font-size: .96rem;
+  }
+  .truth-field textarea {
+    width: 100%;
+    min-height: 120px;
+    resize: vertical;
+    border: 1px solid rgba(122, 26, 67, 0.25);
+    border-radius: 1rem;
+    background: rgba(255,255,255,0.42);
+    color: var(--ink);
+    font: 700 1rem/1.5 "Nunito", system-ui, sans-serif;
+    padding: .9rem 1rem;
+    box-sizing: border-box;
+  }
+  .truth-field textarea::placeholder {
+    color: rgba(75, 16, 48, 0.62);
+  }
+  .truth-field textarea:focus-visible {
+    outline: 3px solid var(--candy);
+    outline-offset: 2px;
+  }
+  .small-btn {
+    margin-top: 1rem;
+    min-height: 46px;
+    padding: .7rem 1.5rem;
+    font-size: .96rem;
+  }
+  .saved-note {
+    min-height: 1.4em;
+    margin: .8rem 0 0;
+    color: var(--ink-soft);
+    font-weight: 800;
+  }
+  .readout {
+    width: min(100%, 36rem);
+    padding: 1.2rem 1.1rem;
+    border-radius: 1.4rem;
+    background: rgba(255,255,255,0.25);
+    border: 1px solid rgba(122, 26, 67, 0.12);
+    box-shadow: 0 18px 36px -28px var(--glow);
+  }
+  .readout p {
+    margin: 0;
+  }
+  .readout .message {
+    margin-top: .8rem;
+    color: var(--ink);
+    font-size: 1rem;
+    line-height: 1.7;
+    font-weight: 700;
+    white-space: pre-wrap;
+  }
+
+  .confirm-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(49, 12, 28, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    z-index: 30;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .2s ease, visibility .2s ease;
+  }
+  .confirm-modal.open {
+    opacity: 1;
+    visibility: visible;
+  }
+  .confirm-card {
+    width: min(100%, 28rem);
+    background: #fff7fa;
+    border-radius: 1.3rem;
+    padding: 1.3rem 1.1rem 1.1rem;
+    box-shadow: 0 24px 52px -30px rgba(75, 16, 48, 0.7);
+    border: 1px solid rgba(122, 26, 67, 0.12);
+  }
+  .confirm-card .truth-copy {
+    margin-bottom: .9rem;
+  }
+  .confirm-card strong {
+    color: var(--candy);
+  }
+  .confirm-card input {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid rgba(122, 26, 67, 0.25);
+    border-radius: 0.9rem;
+    background: rgba(255,255,255,0.7);
+    color: var(--ink);
+    min-height: 50px;
+    padding: 0.8rem 1rem;
+    font: 700 1rem/1.4 "Nunito", system-ui, sans-serif;
+  }
+  .confirm-card input:focus-visible {
+    outline: 3px solid var(--candy);
+    outline-offset: 2px;
+  }
+  .confirm-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+  .secondary-btn {
+    background: rgba(216, 30, 91, 0.1);
+    color: var(--ink);
+    box-shadow: none;
+  }
+
+  .sign {
+    margin: .4rem 0 0;
+    font-family: "Fraunces", Georgia, serif;
+    font-style: italic;
+    font-variation-settings: "SOFT" 100;
+    font-size: 1.2rem;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 700px) {
+    main {
+      justify-content: flex-start;
+      padding: 2rem 1.1rem 2.5rem;
+      gap: 1.35rem;
+    }
+    .gallery-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+    }
+    .photo-card {
+      min-height: 0;
+      aspect-ratio: 1 / 1.1;
+    }
+    .photo-card--wide {
+      min-height: 0;
+      aspect-ratio: 1.55 / 1;
+    }
+  }
+
+  @media (max-width: 420px) {
+    main { padding-right: 0.9rem; padding-left: 0.9rem; }
+    .gallery-header { align-items: flex-start; flex-direction: column; gap: 0.4rem; }
+    .gallery-grid { gap: 0.65rem; }
+    .photo-card { border-radius: 1rem; aspect-ratio: 1 / 1.2; }
+    .photo-card--wide { aspect-ratio: 1.3 / 1; }
+    .photo-card::after {
+      left: 0.55rem;
+      bottom: 0.55rem;
+      padding: 0.35rem 0.55rem;
+      font-size: 0.64rem;
+    }
+    .truth-card { padding: 1.1rem 0.9rem 1rem; }
+    .readout { padding: 1rem 0.9rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    body.open .letter, body.open .rise, body.open .sticker { opacity: 1; }
+    body.open .letter { transform: none; }
+    body.open .name::before { opacity: 1; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<button class="gate" id="gate" type="button" aria-label="Open your surprise">
+  <svg class="heart-big" viewBox="-0.7 -0.7 1.4 1.4" aria-hidden="true">
+    <defs>
+      <linearGradient id="hg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#ff7aa2"/>
+        <stop offset="1" stop-color="#d81e5b"/>
+      </linearGradient>
+    </defs>
+    <path d="M0 .4 C-.62 -.02 -.5 -.6 0 -.26 C.5 -.6 .62 -.02 0 .4Z" fill="url(#hg)"/>
+    <ellipse cx="-.22" cy="-.2" rx=".09" ry=".05" transform="rotate(-34 -.22 -.2)" fill="#fff" opacity=".4"/>
+  </svg>
+  <p class="for">Mariya, this one's for you</p>
+  <span class="hint">tap to open</span>
+</button>
+
+<main id="stage" inert>
+  <h1 class="name" aria-label="Mariya">
+    <span class="letter" style="--i:0" aria-hidden="true">M</span><span class="letter" style="--i:1" aria-hidden="true">a</span><span class="letter" style="--i:2" aria-hidden="true">r</span><span class="letter" style="--i:3" aria-hidden="true">i</span><span class="letter" style="--i:4" aria-hidden="true">y</span><span class="letter" style="--i:5" aria-hidden="true">a</span>
+  </h1>
+
+  <p class="sticker">sugar face</p>
+
+  <p class="lead rise" style="--d:1.7s">I made you a tiny corner of the internet, where a heart shows up every time you tap. Because apparently my feelings are more dramatic than my texting.</p>
+
+  <div class="note-wrap rise" style="--d:2.2s">
+    <p class="note" id="note" aria-live="polite"></p>
+    <button class="btn" id="more" type="button">Tap for a sweet note</button>
+  </div>
+
+  <section class="gallery rise" style="--d:2.8s" aria-label="Our favorite photos together">
+    <div class="gallery-header">
+      <p class="gallery-title">Our little gallery</p>
+      <span class="gallery-tag">love album</span>
+    </div>
+
+    <div class="gallery-grid">
+      <figure class="photo-card photo-card--wide" data-label="memory 1">
+        <img src="images/WhatsApp Image 2026-09-21 at 10.57.09 AM.jpeg" alt="Photo from our memories 1" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="photo-card" data-label="memory 2">
+        <img src="images/WhatsApp Image 2026-09-21 at 10.57.48 AM (2).jpeg" alt="Photo from our memories 2" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="photo-card" data-label="memory 3">
+        <img src="images/WhatsApp Image 2026-09-21 at 10.57.48 AM (3).jpeg" alt="Photo from our memories 3" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="photo-card" data-label="memory 4">
+        <img src="images/WhatsApp Image 2026-10-02 at 10.42.34 PM.jpeg" alt="Photo from our memories 4" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="photo-card photo-card--wide" data-label="memory 5">
+        <img src="images/WhatsApp Image 2026-10-02 at 10.43.09 PM.jpeg" alt="Photo from our memories 5" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="photo-card" data-label="memory 6">
+        <img src="images/WhatsApp Image 2026-10-02 at 10.43.38 PM.jpeg" alt="Photo from our memories 6" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="photo-card" data-label="memory 7">
+        <img src="images/WhatsApp Image 2026-10-02 at 10.43.28 PM.jpeg" alt="Photo from our memories 7" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="photo-card" data-label="memory 8">
+        <img src="images/WhatsApp Image 2026-10-02 at 10.43.52 PM.jpeg" alt="Photo from our memories 8" loading="lazy" decoding="async" />
+      </figure>
+    </div>
+  </section>
+
+  <div class="truth-card rise" style="--d:3.1s">
+    <p class="truth-title">I want to do better with us</p>
+    <p class="truth-copy">If I ever take too long to answer, or if I do something that hurts you without knowing it, please tell me. I want to hear it, understand it, and fix it — not guess.</p>
+    <label class="truth-field" for="honestyInput">
+      <span class="truth-label">My honesty box for you</span>
+      <textarea id="honestyInput" placeholder="If there’s anything you wish I knew, or something I did that you didn’t like, tell me here..."></textarea>
+    </label>
+    <button class="btn small-btn" id="saveHonesty" type="button">Save this for me</button>
+    <p class="saved-note" id="savedNote" aria-live="polite"></p>
+  </div>
+
+  <div class="readout rise" style="--d:3.5s" aria-live="polite">
+    <p class="truth-title">Private note</p>
+    <p class="message" id="displayedMessage">Your note is saved privately and sent to the database.</p>
+  </div>
+
+  <div class="confirm-modal" id="confirmModal" aria-hidden="true">
+    <div class="confirm-card">
+      <p class="truth-title">One last thing</p>
+      <p class="truth-copy">Please type exactly: <strong>i love you</strong></p>
+      <input id="loveInput" type="text" placeholder="i love you" aria-label="Type i love you" />
+      <div class="confirm-actions">
+        <button class="btn small-btn" id="confirmLove" type="button">Confirm</button>
+        <button class="btn small-btn secondary-btn" id="closeModal" type="button">Not now</button>
+      </div>
+      <p class="saved-note" id="confirmStatus" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <p class="sign rise" style="--d:3.9s">Yours, always</p>
+</main>
+
+<script>
+  const sheetScriptUrl = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL";
+
+  (() => {
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const canvas = document.getElementById("fx");
+  const ctx = canvas.getContext("2d");
+  const gate = document.getElementById("gate");
+  const stage = document.getElementById("stage");
+  const note = document.getElementById("note");
+  const more = document.getElementById("more");
+  const honestyInput = document.getElementById("honestyInput");
+  const saveHonesty = document.getElementById("saveHonesty");
+  const savedNote = document.getElementById("savedNote");
+  const displayedMessage = document.getElementById("displayedMessage");
+  const confirmModal = document.getElementById("confirmModal");
+  const loveInput = document.getElementById("loveInput");
+  const confirmLove = document.getElementById("confirmLove");
+  const closeModal = document.getElementById("closeModal");
+  const confirmStatus = document.getElementById("confirmStatus");
+
+  const COLORS = ["#ff4d7e", "#ff7aa2", "#ff9ec0", "#e8336b", "#ffab91", "#ff5c8a"];
+  const NOTES = [
+    "You're my favorite person to talk to about absolutely nothing.",
+    "Somehow you get cuter every day. Honestly, it's unfair.",
+    "If I could pick again, I'd still pick you. Every single time.",
+    "Sugar face: 100% sweet, 0% ordinary.",
+    "My best moments are just the ones with you in them.",
+    "You make ordinary days feel like a reason to smile.",
+    "Warning: I am extremely obsessed with you.",
+    "I made a whole website for you because apparently my heart has better Wi‑Fi than my texts.",
+    "You are the reason my brain decides to be cute on purpose."
+  ];
+
+  const heart = new Path2D();
+  heart.moveTo(0, .4);
+  heart.bezierCurveTo(-.62, -.02, -.5, -.6, 0, -.26);
+  heart.bezierCurveTo(.5, -.6, .62, -.02, 0, .4);
+
+  let W = 0, H = 0, dpr = 1;
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth; H = window.innerHeight;
+    canvas.width = Math.round(W * dpr);
+    canvas.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    if (reduce) scatter();
+  }
+
+  const rnd = (a, b) => a + Math.random() * (b - a);
+  const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+
+  function drawHeart(p, alpha) {
+    ctx.save();
+    ctx.translate(p.x, p.y);
+    ctx.rotate(p.rot);
+    ctx.scale(p.s, p.s);
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = p.c;
+    ctx.fill(heart);
+    if (p.s > 14) {
+      ctx.fillStyle = "rgba(255,255,255,.4)";
+      ctx.beginPath();
+      ctx.ellipse(-.22, -.2, .09, .05, -.6, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.restore();
+  }
+
+  const parts = [];
+  const MAX = 240;
+
+  function spawnFloat() {
+    if (parts.length > MAX) return;
+    const s = rnd(12, 36);
+    const v = rnd(38, 90);
+    parts.push({
+      burst: false, x0: rnd(0, W), x: 0, y: H + s, s, v,
+      amp: rnd(10, 34), f: rnd(.8, 1.7), ph: rnd(0, 6.28),
+      rot: rnd(-.4, .4), vr: rnd(-.5, .5),
+      c: pick(COLORS), a: rnd(.35, .85),
+      age: 0, life: (H + s * 3) / v
+    });
+  }
+
+  function burst(x, y, n = 34) {
+    if (reduce) return;
+    for (let i = 0; i < n && parts.length < MAX + 80; i++) {
+      const ang = rnd(0, Math.PI * 2);
+      const sp = rnd(140, 420);
+      parts.push({
+        burst: true, x, y, s: rnd(10, 30),
+        vx: Math.cos(ang) * sp, vy: Math.sin(ang) * sp - 140,
+        rot: rnd(-.6, .6), vr: rnd(-3, 3),
+        c: pick(COLORS), a: 1,
+        age: 0, life: rnd(1.3, 2.4)
+      });
+    }
+  }
+
+  let rate = 1.3; // ambient hearts per second
+  let acc = 0, last = performance.now();
+  function frame(t) {
+    const dt = Math.min((t - last) / 1000, .05);
+    last = t;
+    acc += dt * rate * Math.min(Math.max(W / 800, .6), 1.4);
+    while (acc >= 1) { spawnFloat(); acc -= 1; }
+
+    ctx.clearRect(0, 0, W, H);
+    for (let i = parts.length - 1; i >= 0; i--) {
+      const p = parts[i];
+      p.age += dt;
+      if (p.age >= p.life) { parts.splice(i, 1); continue; }
+      const k = p.age / p.life;
+      let a;
+      if (p.burst) {
+        const drag = Math.pow(.35, dt);
+        p.vx *= drag; p.vy = p.vy * drag + 420 * dt;
+        p.x += p.vx * dt; p.y += p.vy * dt;
+        a = k < .55 ? 1 : 1 - (k - .55) / .45;
+      } else {
+        p.y -= p.v * dt;
+        p.x = p.x0 + Math.sin(p.age * p.f + p.ph) * p.amp;
+        a = Math.min(k / .1, 1) * Math.min((1 - k) / .25, 1) * p.a;
+      }
+      p.rot += p.vr * dt;
+      drawHeart(p, Math.max(a, 0));
+    }
+    requestAnimationFrame(frame);
+  }
+
+  // reduced motion: one still scatter of hearts, no animation
+  function scatter() {
+    ctx.clearRect(0, 0, W, H);
+    for (let i = 0; i < 18; i++) {
+      drawHeart({ x: rnd(0, W), y: rnd(0, H), s: rnd(14, 34), rot: rnd(-.5, .5), c: pick(COLORS) }, rnd(.2, .45));
+    }
+  }
+
+  window.addEventListener("resize", resize);
+  resize();
+  if (!reduce) {
+    for (let i = 0; i < 6; i++) { spawnFloat(); parts[parts.length - 1].y = rnd(H * .3, H); parts[parts.length - 1].age = 0; }
+    requestAnimationFrame(frame);
+  }
+
+  // open the gate
+  let opened = false;
+  function open() {
+    if (opened) return;
+    opened = true;
+    document.body.classList.add("open");
+    stage.inert = false;
+    rate = 3.2;
+    burst(W / 2, H / 2, 46);
+    setTimeout(() => burst(W * .25, H * .45, 22), 350);
+    setTimeout(() => burst(W * .75, H * .45, 22), 600);
+    setTimeout(() => burst(W / 2, H * .3, 26), 1300);
+    setTimeout(() => { try { document.getElementById("stage").querySelector(".name").focus({ preventScroll: true }); } catch (e) {} }, 100);
+  }
+  gate.addEventListener("click", open);
+
+  // tap anywhere for hearts
+  document.addEventListener("pointerdown", e => {
+    if (!opened) return;
+    if (e.target.closest("button")) return;
+    burst(e.clientX, e.clientY, 12);
+  });
+
+  // sweet notes
+  let n = -1;
+  more.addEventListener("click", () => {
+    n = (n + 1) % NOTES.length;
+    note.classList.remove("show");
+    void note.offsetWidth;
+    note.textContent = NOTES[n];
+    note.classList.add("show");
+    more.textContent = "Another one";
+    const r = more.getBoundingClientRect();
+    burst(r.left + r.width / 2, r.top + r.height / 2, 30);
+  });
+
+  // Google Sheets save flow
+  function openLoveModal() {
+    confirmStatus.textContent = "";
+    loveInput.value = "";
+    confirmModal.classList.add("open");
+    confirmModal.setAttribute("aria-hidden", "false");
+    loveInput.focus();
+  }
+
+  function closeLoveModal() {
+    confirmModal.classList.remove("open");
+    confirmModal.setAttribute("aria-hidden", "true");
+  }
+
+  async function saveMessageToSheet(value) {
+    try {
+      const response = await fetch(sheetScriptUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: value })
+      });
+
+      const result = await response.json();
+      return !!result.ok;
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
+  }
+
+  async function saveLoveCheck(value) {
+    try {
+      const response = await fetch(sheetScriptUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ confirmation: value })
+      });
+
+      const result = await response.json();
+      return !!result.ok;
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
+  }
+
+  displayedMessage.textContent = "Your note is saved privately to your Google Sheet.";
+
+  saveHonesty.addEventListener("click", async () => {
+    const value = honestyInput.value.trim();
+    if (!value) {
+      savedNote.textContent = "Tell me anything you want me to know.";
+      return;
+    }
+
+    const saved = await saveMessageToSheet(value);
+    if (!saved) {
+      savedNote.textContent = "Something went wrong. Try again.";
+      return;
+    }
+
+    savedNote.textContent = "Saved privately.";
+    honestyInput.value = "";
+    displayedMessage.textContent = "Your note is saved privately to your Google Sheet.";
+    const r = saveHonesty.getBoundingClientRect();
+    burst(r.left + r.width / 2, r.top + r.height / 2, 26);
+    openLoveModal();
+  });
+
+  confirmLove.addEventListener("click", async () => {
+    const typed = loveInput.value.trim().toLowerCase();
+    if (typed !== "i love you") {
+      confirmStatus.textContent = "Not quite. Type exactly: i love you";
+      return;
+    }
+
+    const confirmed = await saveLoveCheck(typed);
+    if (!confirmed) {
+      confirmStatus.textContent = "Could not save confirmation. Please try again.";
+      return;
+    }
+
+    confirmStatus.textContent = "Confirmed. Thank you.";
+    closeLoveModal();
+    savedNote.textContent = "Saved and confirmed.";
+  });
+
+  loveInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      confirmLove.click();
+    }
+  });
+
+  closeModal.addEventListener("click", closeLoveModal);
+  confirmModal.addEventListener("click", (event) => {
+    if (event.target === confirmModal) closeLoveModal();
+  });
+})();
+</script>
+</body>
+</html>
